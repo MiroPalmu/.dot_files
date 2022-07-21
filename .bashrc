@@ -55,10 +55,16 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
+# This also explains why non printable characters have to be enclosed with \[ and \]
+# https://stackoverflow.com/questions/53811008/terminal-line-has-broken-itself-when-type-long-characters-on-osx
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$\n> \033[1;37m'
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]\[\033[32m\]$(parse_git_branch)\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$\[\n> \033[1;37m\]'
     # Set escpae code that resests the color 
-    export PS0='\033[0m'
+    export PS0='\[\033[0m\]'
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
