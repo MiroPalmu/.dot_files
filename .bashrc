@@ -125,8 +125,15 @@ fi
 [ -r /home/pamiro/.byobu/prompt ] && . /home/pamiro/.byobu/prompt   #byobu-prompt#
 
 
+# Everything after and before the mark are manually added. Potentially could be removed:
+
 alias xgraph=/usr/local/xgraph/XGraph4.38_linux64/bin/xgraph
 export HISTTIMEFORMAT="%F %T "
 setxkbmap -option "nbsp:none"
 
 export PYTHONPATH=:/home/pamiro/vlasiator/analysator
+
+# For git-credential-manager
+export GCM_CREDENTIAL_STORE=cache
+
+####################################################### Ending of manually added
