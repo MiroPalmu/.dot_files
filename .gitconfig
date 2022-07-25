@@ -1,0 +1,8 @@
+[user]
+	email = miro.palmu@helsinki.fi
+	name = Miro Palmu
+[color]
+	ui = auto
+[credential]
+	credentialStore = store
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
